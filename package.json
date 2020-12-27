@@ -1,6 +1,6 @@
 {
   "name": "openhps-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenHPS Command Line Interface Tool",
   "main": "index.js",
   "bin": {
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "ejs": "^3.1.5",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "shelljs": "^0.8.4"
   }
 }
