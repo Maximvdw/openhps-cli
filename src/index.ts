@@ -19,10 +19,17 @@ const QUESTIONS = [
     name: 'name',
     type: 'input',
     message: 'Please input a new project name:'
-}];
+},
+{
+    name: 'author',
+    type: 'input',
+    message: 'Please input the project author:'
+}
+];
 
 export interface CliOptions {
     projectName: string
+    projectAuthor: string
     templateName: string
     templatePath: string
     tartgetPath: string
@@ -30,9 +37,11 @@ export interface CliOptions {
 
 const CURR_DIR = process.cwd();
 
+chalk.redBright("OpenHPS CLI Tool")
 inquirer.prompt(QUESTIONS).then(answers => {
     const projectChoice = answers['template'];
     const projectName = answers['name'];
+    const projectAuthor = answers['author'];
     //@ts-ignore
     const templatePath = path.join(__dirname, 'templates', projectChoice);
     //@ts-ignore
@@ -43,6 +52,8 @@ inquirer.prompt(QUESTIONS).then(answers => {
         projectName,
         //@ts-ignore
         templateName: projectChoice,
+        //@ts-ignore
+        projectAuthor,
         templatePath,
         tartgetPath
     }
