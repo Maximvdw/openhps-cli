@@ -1,8 +1,8 @@
 {
-  "name": "openhps-cli",
-  "version": "1.0.1",
+  "name": "@openhps/cli",
+  "version": "1.0.0",
   "description": "OpenHPS Command Line Interface Tool",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "openhps-cli": "./dist/index.js"
   },
@@ -13,8 +13,8 @@
   "files": [
     "dist/**/*"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Maxim Van de Wynckel",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/ejs": "^3.0.5",
     "@types/inquirer": "^7.3.1",

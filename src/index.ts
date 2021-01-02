@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+/**
+ * @see {@link https://dev.to/duwainevandriel/build-your-own-project-template-generator-59k4}
+ */
+
 import * as fs from 'fs';
 import * as path from 'path';
 import * as inquirer from 'inquirer';
@@ -28,31 +32,28 @@ const QUESTIONS = [
 ];
 
 export interface CliOptions {
-    projectName: string
-    projectAuthor: string
-    templateName: string
-    templatePath: string
-    tartgetPath: string
+    projectName: string;
+    projectAuthor: string;
+    templateName: string;
+    templatePath: string;
+    tartgetPath: string;
 }
 
 const CURR_DIR = process.cwd();
 
-chalk.redBright("OpenHPS CLI Tool")
+console.log(chalk.redBright("OpenHPS CLI Tool"));
+
 inquirer.prompt(QUESTIONS).then(answers => {
     const projectChoice = answers['template'];
     const projectName = answers['name'];
     const projectAuthor = answers['author'];
-    //@ts-ignore
+
     const templatePath = path.join(__dirname, 'templates', projectChoice);
-    //@ts-ignore
     const tartgetPath = path.join(CURR_DIR, projectName);
 
     const options: CliOptions = {
-        //@ts-ignore
         projectName,
-        //@ts-ignore
         templateName: projectChoice,
-        //@ts-ignore
         projectAuthor,
         templatePath,
         tartgetPath
@@ -62,8 +63,7 @@ inquirer.prompt(QUESTIONS).then(answers => {
         return;
     }
 
-    //@ts-ignore
-    createDirectoryContents(templatePath, projectName);
+    createDirectoryContents(templatePath, projectName, projectAuthor);
 
     postProcess(options);
 });
@@ -80,7 +80,7 @@ function createProject(projectPath: string) {
 
 const SKIP_FILES = ['node_modules', '.template.json'];
 
-function createDirectoryContents(templatePath: string, projectName: string) {
+function createDirectoryContents(templatePath: string, projectName: string, projectAuthor: string) {
     // read all files/folders (1 level) from template folder
     const filesToCreate = fs.readdirSync(templatePath);
     // loop each file/folder
@@ -96,7 +96,7 @@ function createDirectoryContents(templatePath: string, projectName: string) {
         if (stats.isFile()) {
             // read file content and transform it using template engine
             let contents = fs.readFileSync(origFilePath, 'utf8');
-            contents = template.render(contents, { projectName });
+            contents = template.render(contents, { projectName, projectAuthor });
             // write file to destination folder
             const writePath = path.join(CURR_DIR, projectName, file);
             fs.writeFileSync(writePath, contents, 'utf8');
@@ -104,7 +104,7 @@ function createDirectoryContents(templatePath: string, projectName: string) {
             // create folder in destination folder
             fs.mkdirSync(path.join(CURR_DIR, projectName, file));
             // copy files/folder inside current folder recursively
-            createDirectoryContents(path.join(templatePath, file), path.join(projectName, file));
+            createDirectoryContents(path.join(templatePath, file), path.join(projectName, file), projectAuthor);
         }
     });
 }
@@ -118,6 +118,5 @@ function postProcess(options: CliOptions) {
             return false;
         }
     }
-
     return true;
 }

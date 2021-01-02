@@ -31,7 +31,7 @@ export class ExampleUnit extends Unit {
         baseName: "temperature",
         aliases: ["R", "rankine scale"],
         definitions: [
-            { unit: 'kelvin', offset: 9 / 5 }
+            { unit: 'kelvin', magnitude: 1 / 1.8 }
         ]
     });
 }
