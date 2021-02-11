@@ -26,8 +26,8 @@
     "src/**/*"
   ],
   "scripts": {
-    "test": "mocha --experimental-worker",
-    "test:jenkins": "jenkins-mocha --cobertura",
+    "test": "mocha --config test/.mocharc.json",
+    "test:jenkins": "jenkins-mocha --cobertura --config test/.mocharc.json",
     "cover": "nyc mocha && nyc report --reporter=cobertura",
     "lint": "eslint src/**",
     "clean": "shx rm -rf ./dist && shx rm -rf ./docs/out",
@@ -53,9 +53,9 @@
   },
   "devDependencies": {
     "reflect-metadata": ">=0.1.13",
-    "@openhps/core": ">=0.2.0-alpha.14",
+    "@openhps/core": ">=0.2.0-alpha.23",
     "chai": "^4.2.0",
-    "mocha": "^6.2.3",
+    "mocha": "^8.2.1",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@types/chai": "^4.2.14",
