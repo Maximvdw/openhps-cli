@@ -1,6 +1,6 @@
 {
   "name": "@openhps/cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "OpenHPS Command Line Interface Tool",
   "main": "dist/index.js",
   "bin": {

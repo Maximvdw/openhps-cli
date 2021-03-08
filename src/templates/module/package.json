@@ -48,12 +48,12 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "@openhps/core": ">=0.2.0-alpha.14",
+    "@openhps/core": ">=0.3.0-alpha.10",
     "reflect-metadata": ">=0.1.13"
   },
   "devDependencies": {
     "reflect-metadata": ">=0.1.13",
-    "@openhps/core": ">=0.2.0-alpha.23",
+    "@openhps/core": ">=0.3.0-alpha.10",
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "@commitlint/cli": "^11.0.0",
