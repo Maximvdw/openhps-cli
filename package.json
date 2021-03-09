@@ -1,6 +1,6 @@
 {
   "name": "@openhps/cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "OpenHPS Command Line Interface Tool",
   "main": "dist/index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "node dist/index.js",
     "build": "tsc && shx rm -rf dist/templates && shx cp -r src/templates dist"
   },
   "files": [
