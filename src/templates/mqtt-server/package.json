@@ -1,0 +1,15 @@
+{
+  "name": "openhps-server",
+  "version": "1.0.0",
+  "description": "OpenHPS MQTT Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openhps/core": "^0.3.0-alpha.68",
+    "@openhps/mqtt": "0.1.0-alpha.2"
+  }
+}
